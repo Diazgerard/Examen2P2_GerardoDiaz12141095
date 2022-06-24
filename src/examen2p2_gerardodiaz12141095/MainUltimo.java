@@ -5,9 +5,12 @@
  */
 package examen2p2_gerardodiaz12141095;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -240,7 +243,21 @@ public class MainUltimo extends javax.swing.JFrame {
     private void jb_guardarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarCancionMouseClicked
         // TODO add your handling code here:
         
+        String letra =  ta_escribirCancion.getText();
+        Letra l = new Letra(letra);
+        adminLetra ap = new adminLetra("./Letra.txt");
+            ap.cargarArchivo();
+            ap.setLetra(l);
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(MainUltimo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        
+        ac.setAvanzar(false);
+        b.setAvanzar(false);
+       
         
         jd_guardarCancion.setModal(true);
         jd_guardarCancion.pack();
@@ -251,11 +268,7 @@ public class MainUltimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_guardarCancionMouseClicked
 
     private void jb_ReproduccionCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ReproduccionCancionMouseClicked
-        // TODO add your handling code here:
-       
-        
-        
-        
+        // TODO add your handling code here:  
     }//GEN-LAST:event_jb_ReproduccionCancionMouseClicked
 
     private void jb_PausarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_PausarCancionMouseClicked
@@ -357,6 +370,7 @@ public class MainUltimo extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList <Cancion> cancion = new ArrayList();
+    ArrayList <Letra> letra = new ArrayList();
     
     administrarCancion ac;
     bitacora b;

@@ -11,4 +11,28 @@ package examen2p2_gerardodiaz12141095;
  */
 public class Letra {
     
+    private String letra;
+
+    public Letra() {
+    }
+
+    public Letra(String letra) {
+        this.letra = letra;
+    }
+
+    public String getLetra() {
+        return letra;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
+    }
+
+    @Override
+    public String toString() {
+        return letra;
+    }
+    
+    
+    
 }
