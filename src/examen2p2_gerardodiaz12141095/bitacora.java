@@ -25,7 +25,7 @@ public class bitacora extends Thread{
     
     private boolean flag;
 
-    public bitacora(JSpinner sp_v, JProgressBar progBar_t) {
+    public bitacora(JProgressBar progBar_t) {
         this.sp_v = sp_v;
         this.progBar_t = progBar_t;
         avanzar = true;
@@ -58,8 +58,8 @@ public class bitacora extends Thread{
                 try {
                     salida = new FileWriter("./bitacora.txt", true);
                     br = new BufferedWriter(salida);
-                    br.write("velocidad:" + sp_v.getValue().toString()
-                            + " Tiempo transcurrido:" + Integer.toString(progBar_t.getValue())
+                    br.write(
+                             " Tiempo transcurrido:" + Integer.toString(progBar_t.getValue())
                             );
                     br.newLine();
                     br.flush();
@@ -69,7 +69,7 @@ public class bitacora extends Thread{
                 }
             }
             try {
-                Thread.sleep(350);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(bitacora.class.getName()).log(Level.SEVERE, null, ex);
             }

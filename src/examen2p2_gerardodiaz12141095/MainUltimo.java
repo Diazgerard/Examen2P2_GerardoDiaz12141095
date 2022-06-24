@@ -6,6 +6,8 @@
 package examen2p2_gerardodiaz12141095;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -15,12 +17,17 @@ import javax.swing.tree.DefaultTreeModel;
  * @author gerar
  */
 public class MainUltimo extends javax.swing.JFrame {
-
+    static Scanner lea = new Scanner(System.in);
+    static Random r = new Random();
+     int numero;
     /**
      * Creates new form MainUltimo
      */
     public MainUltimo() {
         initComponents();
+        
+        b = new bitacora(pg_hiloCancion);
+        ac = new administrarCancion(numero, pg_hiloCancion);
     }
 
     /**
@@ -206,6 +213,15 @@ public class MainUltimo extends javax.swing.JFrame {
     private void jb_grabarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_grabarCancionMouseClicked
         // TODO add your handling code here:
         ta_escribirCancion.setEnabled(true);
+        ac.setAvanzar(true);
+        b.setAvanzar(true);
+         
+        boolean avanzar = true;
+        
+        while(ta_escribirCancion.isEnabled()){
+            int numero = 1 + r.nextInt(100);
+        }
+       
         
     }//GEN-LAST:event_jb_grabarCancionMouseClicked
 
@@ -222,7 +238,7 @@ public class MainUltimo extends javax.swing.JFrame {
 
     private void jb_ReproduccionCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ReproduccionCancionMouseClicked
         // TODO add your handling code here:
-        
+       
         
         
         
@@ -232,7 +248,7 @@ public class MainUltimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ac.setAvanzar(false);
         b.setAvanzar(false);
-        
+        ta_escribirCancion.setEnabled(false);
         
     }//GEN-LAST:event_jb_PausarCancionMouseClicked
 

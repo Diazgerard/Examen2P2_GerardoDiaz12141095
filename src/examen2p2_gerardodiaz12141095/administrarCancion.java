@@ -14,11 +14,13 @@ import javax.swing.JProgressBar;
 public class administrarCancion extends Thread{
     
     private JProgressBar progBar;
+    private int numero;
     private boolean avanzar;
     private boolean vive;
 
-    public administrarCancion(JProgressBar progBar) {
+    public administrarCancion(int numero, JProgressBar progBar) {
         this.progBar = progBar;
+        this.numero = numero;
         avanzar = true;
         vive = true;
     }
