@@ -5,6 +5,7 @@
  */
 package examen2p2_gerardodiaz12141095;
 
+import java.util.Random;
 import javax.swing.JProgressBar;
 
 /**
@@ -12,18 +13,29 @@ import javax.swing.JProgressBar;
  * @author gerar
  */
 public class administrarCancion extends Thread{
+    static Random r = new Random();
     
     private JProgressBar progBar;
     private int numero;
     private boolean avanzar;
     private boolean vive;
 
-    public administrarCancion(int numero, JProgressBar progBar) {
+    public administrarCancion(JProgressBar progBar, int numero) {
         this.progBar = progBar;
         this.numero = numero;
         avanzar = true;
         vive = true;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    
 
     public void setAvanzar(boolean avanzar) {
         this.avanzar = avanzar;
@@ -37,13 +49,15 @@ public class administrarCancion extends Thread{
     public void run() {
         while (vive) {
             if (avanzar) {
-                progBar.setValue(progBar.getValue() + 1);
+                progBar.setValue(r.nextInt(100));
                 //activar y modificar propiedad stringPainted para que esto funciones
-                progBar.setString(Integer.toString(progBar.getValue()) + " Minutos");
+                //progBar.setString(Integer.toString(progBar.getValue()) + " Minutos");
 
             }
+            int num = this.numero;
             try {
-                Thread.sleep(50);
+                Thread.sleep(65);
+                
             } catch (InterruptedException ex) {
             }
         }
