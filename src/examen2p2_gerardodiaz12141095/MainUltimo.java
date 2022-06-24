@@ -224,10 +224,15 @@ public class MainUltimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
+        
+        
     }//GEN-LAST:event_jb_ReproduccionCancionMouseClicked
 
     private void jb_PausarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_PausarCancionMouseClicked
         // TODO add your handling code here:
+        ac.setAvanzar(false);
+        b.setAvanzar(false);
+        
         
     }//GEN-LAST:event_jb_PausarCancionMouseClicked
 
@@ -248,6 +253,13 @@ public class MainUltimo extends javax.swing.JFrame {
             
             node.add(can);
             modelo.reload();
+
+            adminCancion ap = new adminCancion("./Cancion.txt");
+            ap.cargarArchivo();
+            ap.setAlumno(c);
+            ap.escribirArchivo();
+            JOptionPane.showMessageDialog(this,
+                    "Cancion guardado exitosamente");
             tf_nombreCancion.setText("");
             jt_cancion1.setModel(modelo);
             jd_guardarCancion.dispose();
@@ -315,4 +327,7 @@ public class MainUltimo extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList <Cancion> cancion = new ArrayList();
+    
+    administrarCancion ac;
+    bitacora b;
 }

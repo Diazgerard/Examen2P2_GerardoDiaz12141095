@@ -5,13 +5,17 @@
  */
 package examen2p2_gerardodiaz12141095;
 
+import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -47,48 +51,39 @@ public class adminCancion {
     }
     
     
-    public void cargarArchivo() {
-        try {            
-            listaCancion = new ArrayList();
-            Cancion temp;
-            if (archivo.exists()) {
-                FileInputStream entrada
-                    = new FileInputStream(archivo);
-                ObjectInputStream objeto
-                    = new ObjectInputStream(entrada);
-                try {
-                    while ((temp = (Cancion) objeto.readObject()) != null) {
-                        listaCancion.add(temp);
-                    }
-                } catch (EOFException e) {
-                    //encontro el final del archivo
+    public void cargarArchivo()  {
+       Scanner sc = null;
+        listaCancion = new ArrayList();
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter(";");
+                while (sc.hasNext()) {
+                    listaCancion.add(new Cancion(
+                                    sc.next()
+                                 )
+                    );
                 }
-                objeto.close();
-                entrada.close();
-            }            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+            } catch (Exception ex) {
+            }
+            sc.close();
+        }//FIN IF
     }
 
-    public void escribirArchivo() {
-        FileOutputStream fw = null;
-        ObjectOutputStream bw = null;
+    public void escribirArchivo() throws IOException {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
         try {
-            fw = new FileOutputStream(archivo);
-            bw = new ObjectOutputStream(fw);
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
             for (Cancion t : listaCancion) {
-                bw.writeObject(t);
+                bw.write(t.getCancion() + ";");   
             }
             bw.flush();
         } catch (Exception ex) {
-        } finally {
-            try {
-                bw.close();
-                fw.close();
-            } catch (Exception ex) {
-            }
         }
+        bw.close();
+        fw.close();
     }
     
     
