@@ -5,6 +5,11 @@
  */
 package examen2p2_gerardodiaz12141095;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author gerar
@@ -27,6 +32,12 @@ public class MainUltimo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_guardarCancion = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        tf_nombreCancion = new javax.swing.JTextField();
+        scroll_tree1 = new javax.swing.JScrollPane();
+        jt_cancion1 = new javax.swing.JTree();
+        jb_guarda = new javax.swing.JButton();
         pg_hiloCancion = new javax.swing.JProgressBar();
         jl_cancion = new javax.swing.JLabel();
         scroll_tree = new javax.swing.JScrollPane();
@@ -39,13 +50,66 @@ public class MainUltimo extends javax.swing.JFrame {
         jb_ReproduccionCancion = new javax.swing.JButton();
         jb_PausarCancion = new javax.swing.JButton();
 
+        jLabel1.setText("Nombre Cancion");
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Canciones");
+        jt_cancion1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_cancion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_cancion1MouseClicked(evt);
+            }
+        });
+        scroll_tree1.setViewportView(jt_cancion1);
+
+        jb_guarda.setText("Guardar Cancion ");
+        jb_guarda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_guardaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_guardarCancionLayout = new javax.swing.GroupLayout(jd_guardarCancion.getContentPane());
+        jd_guardarCancion.getContentPane().setLayout(jd_guardarCancionLayout);
+        jd_guardarCancionLayout.setHorizontalGroup(
+            jd_guardarCancionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                .addGroup(jd_guardarCancionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(tf_nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jb_guarda, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(scroll_tree1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jd_guardarCancionLayout.setVerticalGroup(
+            jd_guardarCancionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                .addGroup(jd_guardarCancionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jd_guardarCancionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(76, 76, 76)
+                        .addComponent(jb_guarda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_guardarCancionLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(scroll_tree1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pg_hiloCancion.setToolTipText("P");
         pg_hiloCancion.setString(Integer.toString(pg_hiloCancion.getValue())+" Minutos");
         pg_hiloCancion.setStringPainted(true);
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Canciones");
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Canciones");
         jt_cancion.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jt_cancion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -56,6 +120,7 @@ public class MainUltimo extends javax.swing.JFrame {
 
         ta_escribirCancion.setColumns(20);
         ta_escribirCancion.setRows(5);
+        ta_escribirCancion.setEnabled(false);
         scroll_ta.setViewportView(ta_escribirCancion);
 
         panel.setLayout(new java.awt.GridLayout(1, 0));
@@ -140,13 +205,18 @@ public class MainUltimo extends javax.swing.JFrame {
 
     private void jb_grabarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_grabarCancionMouseClicked
         // TODO add your handling code here:
-        
+        ta_escribirCancion.setEnabled(true);
         
     }//GEN-LAST:event_jb_grabarCancionMouseClicked
 
     private void jb_guardarCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarCancionMouseClicked
         // TODO add your handling code here:
         
+        jd_guardarCancion.setModal(true);
+        jd_guardarCancion.pack();
+        jd_guardarCancion.setLocationRelativeTo(this);
+        jd_guardarCancion.setVisible(true);
+
         
     }//GEN-LAST:event_jb_guardarCancionMouseClicked
 
@@ -160,6 +230,34 @@ public class MainUltimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jb_PausarCancionMouseClicked
+
+    private void jt_cancion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_cancion1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_cancion1MouseClicked
+
+    private void jb_guardaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardaMouseClicked
+        // TODO add your handling code here:
+        try {
+            String nombre = tf_nombreCancion.getText();
+            Cancion c = new Cancion(nombre);
+            cancion.add(c);
+
+            DefaultTreeModel modelo = (DefaultTreeModel) jt_cancion.getModel();
+            DefaultMutableTreeNode can = new DefaultMutableTreeNode(c);
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt_cancion1.getLastSelectedPathComponent();
+            
+            node.add(can);
+            modelo.reload();
+            tf_nombreCancion.setText("");
+            jt_cancion1.setModel(modelo);
+            jd_guardarCancion.dispose();
+            
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Seleccione una Cancion");
+        }
+    }//GEN-LAST:event_jb_guardaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -197,16 +295,24 @@ public class MainUltimo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jb_PausarCancion;
     private javax.swing.JButton jb_ReproduccionCancion;
     private javax.swing.JButton jb_grabarCancion;
+    private javax.swing.JButton jb_guarda;
     private javax.swing.JButton jb_guardarCancion;
+    private javax.swing.JDialog jd_guardarCancion;
     private javax.swing.JLabel jl_cancion;
     private javax.swing.JTree jt_cancion;
+    private javax.swing.JTree jt_cancion1;
     private javax.swing.JPanel panel;
     public javax.swing.JProgressBar pg_hiloCancion;
     private javax.swing.JScrollPane scroll_ta;
     private javax.swing.JScrollPane scroll_tree;
+    private javax.swing.JScrollPane scroll_tree1;
     private javax.swing.JTextArea ta_escribirCancion;
+    private javax.swing.JTextField tf_nombreCancion;
     // End of variables declaration//GEN-END:variables
+
+    ArrayList <Cancion> cancion = new ArrayList();
 }
